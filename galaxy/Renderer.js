@@ -15,7 +15,7 @@ export default class Renderer {
     });
 
     this.resize();
-    this.instance.setClearColor("#211d20");
+    this.instance.setClearColor("#000000");
   }
 
   render() {
