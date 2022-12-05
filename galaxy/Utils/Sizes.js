@@ -1,24 +1,21 @@
-import EventEmitter from "./EventEmitter"
+import EventEmitter from "./EventEmitter";
 
 export default class Sizes extends EventEmitter {
-    
-    constructor (canvas) {
+  constructor() {
+    super();
 
-        super()
+    this.handleResize();
 
-        this.handleResize(canvas)
+    window.addEventListener("resize", () => {
+      this.handleResize();
+    });
+  }
 
-        window.addEventListener("resize", () => {
-            this.handleResize(canvas)
-        })
-    }
+  handleResize() {
+    this.width = window.innerWidth;
+    this.heigth = window.innerHeight;
+    this.pixelRatio = Math.min(window.devicePixelRatio, 2);
 
-    handleResize (canvas) {
-        const convasSize = canvas.getBoundingClientRect()
-        this.width = convasSize.width
-        this.heigth = convasSize.height
-        this.pixelRatio = Math.min(window.devicePixelRatio, 2)
-
-        this.trigger('resize')
-    }
+    this.trigger("resize");
+  }
 }

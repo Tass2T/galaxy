@@ -11,11 +11,9 @@ export default class Renderer {
   setInstance() {
     this.instance = new THREE.WebGLRenderer({
       canvas: this.galaxy.canvas,
-      antialias: true,
     });
 
     this.resize();
-    this.instance.setClearColor("#000000");
   }
 
   render() {

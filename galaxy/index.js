@@ -1,6 +1,7 @@
 import Camera from "./Camera";
 import Sizes from "./Utils/Sizes";
 import Time from "./Utils/Time";
+import Stars from "./Stars";
 import * as THREE from "three";
 import Renderer from "./Renderer";
 
@@ -17,9 +18,10 @@ export default class Galaxy {
     this.canvas = canvas;
     this.scene = new THREE.Scene();
     this.sizes = new Sizes(this.canvas);
-    this.renderer = new Renderer();
     this.times = new Time();
     this.camera = new Camera();
+    this.starGenerator = new Stars(1300);
+    this.renderer = new Renderer();
 
     // EVENTS
     this.sizes.on("resize", () => {
