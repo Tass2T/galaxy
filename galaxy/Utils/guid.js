@@ -10,9 +10,6 @@ export default class GUID {
       .add(this.galaxy, "starCount")
       .min(100)
       .max(10000000)
-      .step(500)
-      .onFinishChange(this.galaxy.stars.createStarList());
-
-    console.log(this.galaxy.starCount);
+      .step(500);
   }
 }
