@@ -14,7 +14,6 @@ export default class Controls {
     this.instance.target = new THREE.Vector3(0, 0, 0);
     this.instance.autoRotate = true;
     this.instance.autoRotateSpeed = 0.1;
-    // this.instance.maxPolarAngle = 0;
   }
 
   update() {
