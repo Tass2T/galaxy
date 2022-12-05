@@ -26,7 +26,7 @@ export default class Stars {
     for (let i = 0; i < this.positions.length; i += 3) {
       this.positions[i] = (Math.random() - 0.5) * 20;
       this.positions[i + 1] = (Math.random() - 0.5) * 20;
-      this.positions[i + 2] = (Math.random() - 0.5) * 40;
+      this.positions[i + 2] = (Math.random() - 0.5) * 20;
     }
 
     this.geometry.setAttribute(

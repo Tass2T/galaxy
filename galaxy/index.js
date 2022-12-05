@@ -5,6 +5,7 @@ import Stars from "./Stars";
 import * as THREE from "three";
 import Renderer from "./Renderer";
 import Controls from "./Utils/Controls";
+// import Light from "./Light";
 
 let instance = null;
 
@@ -17,13 +18,14 @@ export default class Galaxy {
     instance = this;
 
     this.canvas = canvas;
-    this.starCount = 2500;
+    this.starCount = 1000;
     this.scene = new THREE.Scene();
     this.sizes = new Sizes(this.canvas);
     this.times = new Time();
     this.camera = new Camera();
     this.stars = new Stars();
     this.renderer = new Renderer();
+    // this.light = new Light();
 
     if (process.env.NODE_ENV === "development") {
       this.control = new Controls(this.camera.instance, this.canvas);

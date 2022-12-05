@@ -13,10 +13,8 @@ export default class Camera {
       0.1,
       100
     );
-    this.instance.position.set(0, 0, 12);
+    this.instance.position.set(0, 0, 4);
   }
-
-  update() {}
 
   resize() {
     this.instance.aspect = window.innerWidth / window.innerHeight;
