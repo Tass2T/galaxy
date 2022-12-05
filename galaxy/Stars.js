@@ -2,26 +2,31 @@ import * as THREE from "three";
 import Galaxy from ".";
 
 export default class Stars {
-  constructor(numberOfStar) {
+  constructor() {
     this.galaxy = new Galaxy();
     this.geometry = new THREE.BufferGeometry();
     this.material = new THREE.PointsMaterial({
-      size: 0.01,
+      size: 0.05,
       color: 0xffffff,
     });
-    this.numberOfStar = numberOfStar;
+    this.stars = null;
 
+    this.createStarList.bind(this);
     this.createStarList();
   }
 
   createStarList() {
-    this.positions = new Float32Array(this.numberOfStar * 3);
-    this.colors = new Float32Array(this.numberOfStar * 3);
+    if (this.stars != null) {
+      this.galaxy.scene.remove(this.stars);
+    }
+
+    this.positions = new Float32Array(this.galaxy.starCount * 3);
+    this.colors = new Float32Array(this.galaxy.starCount * 3);
 
     for (let i = 0; i < this.positions.length; i += 3) {
-      this.positions[i] = (Math.random() - 0.5) * 5;
-      this.positions[i + 1] = (Math.random() - 0.5) * 5;
-      this.positions[i + 2] = Math.random() + 1 * 4;
+      this.positions[i] = (Math.random() - 0.5) * 20;
+      this.positions[i + 1] = (Math.random() - 0.5) * 20;
+      this.positions[i + 2] = (Math.random() - 0.5) * 40;
     }
 
     this.geometry.setAttribute(
