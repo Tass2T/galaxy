@@ -3,8 +3,6 @@ import * as THREE from "three";
 
 export default class Camera {
   constructor() {
-    // this.galaxy = new Galaxy();
-
     this.setInstance();
   }
 
@@ -15,9 +13,10 @@ export default class Camera {
       0.1,
       100
     );
-    this.instance.position.set(0, 0, 8);
-    // this.galaxy.scene.add(this.instance);
+    this.instance.position.set(0, 0, 12);
   }
+
+  update() {}
 
   resize() {
     this.instance.aspect = window.innerWidth / window.innerHeight;
