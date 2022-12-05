@@ -4,6 +4,8 @@ import Time from "./Utils/Time";
 import Stars from "./Stars";
 import * as THREE from "three";
 import Renderer from "./Renderer";
+import Controls from "./Utils/Controls";
+import GUID from "./Utils/guid";
 
 let instance = null;
 
@@ -20,8 +22,14 @@ export default class Galaxy {
     this.sizes = new Sizes(this.canvas);
     this.times = new Time();
     this.camera = new Camera();
-    this.starGenerator = new Stars(1300);
+    this.starCount = 2000;
+    this.stars = new Stars(this.starCount);
     this.renderer = new Renderer();
+
+    if (process.env.NODE_ENV === "development") {
+      this.control = new Controls(this.camera.instance, this.canvas);
+      this.guid = new GUID();
+    }
 
     // EVENTS
     this.sizes.on("resize", () => {
@@ -38,6 +46,7 @@ export default class Galaxy {
   }
 
   update() {
+    this.control.update();
     this.renderer.render();
   }
 }
