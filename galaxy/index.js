@@ -27,12 +27,11 @@ export default class Galaxy {
     this.stars = new Stars();
     this.renderer = new Renderer();
     this.light = new Light();
+    this.control = new Controls(this.camera.instance, this.canvas);
 
     if (process.env.NODE_ENV === "development") {
       this.guid = new GUID();
     }
-
-    this.control = new Controls(this.camera.instance, this.canvas);
 
     // EVENTS
     this.sizes.on("resize", () => {
