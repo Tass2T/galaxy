@@ -5,7 +5,6 @@ import Stars from "./Stars";
 import * as THREE from "three";
 import Renderer from "./Renderer";
 import Controls from "./Utils/Controls";
-import Light from "./Light";
 import GUID from "./Utils/guid";
 
 let instance = null;
@@ -26,7 +25,6 @@ export default class Galaxy {
     this.camera = new Camera();
     this.stars = new Stars();
     this.renderer = new Renderer();
-    this.light = new Light();
     this.control = new Controls(this.camera.instance, this.canvas);
 
     if (process.env.NODE_ENV === "development") {
