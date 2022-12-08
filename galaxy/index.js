@@ -6,6 +6,7 @@ import * as THREE from "three";
 import Renderer from "./Renderer";
 import Controls from "./Utils/Controls";
 import GUID from "./Utils/guid";
+import Stains from "./Stains";
 
 let instance = null;
 
@@ -24,6 +25,7 @@ export default class Galaxy {
     this.times = new Time();
     this.camera = new Camera();
     this.stars = new Stars();
+    this.stains = new Stains()
     this.renderer = new Renderer();
     this.control = new Controls(this.camera.instance, this.canvas);
 
