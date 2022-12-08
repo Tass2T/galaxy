@@ -31,15 +31,6 @@ export default class GUID {
     // CONTROL FOLDER
     this.controlFolder = this.instance.addFolder("Control");
     this.controlFolder
-      .add(this.galaxy.control.instance, "autoRotate")
-      .name("auto rotation");
-    this.controlFolder
-      .add(this.galaxy.control.instance, "autoRotateSpeed")
-      .min(0.0)
-      .max(10)
-      .step(0.5)
-      .name("auto rotation speed");
-    this.controlFolder
       .add(this.galaxy.control.instance, "enableZoom")
       .name("enable zoom");
     this.controlFolder

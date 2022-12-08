@@ -12,7 +12,7 @@ export default class Stars {
     this.galaxy = new Galaxy();
     this.texture = this.getStarTexture();
     this.material = new THREE.PointsMaterial({
-      size: 0.1,
+      size: 0.01,
       transparent: true,
       map: this.texture,
       alphaMap: this.texture,

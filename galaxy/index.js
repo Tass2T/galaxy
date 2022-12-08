@@ -6,7 +6,7 @@ import * as THREE from "three";
 import Renderer from "./Renderer";
 import Controls from "./Utils/Controls";
 import GUID from "./Utils/guid";
-// import Stains from "./Stains";
+import Stains from "./Stains";
 
 let instance = null;
 
@@ -19,13 +19,13 @@ export default class Galaxy {
     instance = this;
 
     this.canvas = canvas;
-    this.starCount = 1000;
+    this.starCount = 4000;
     this.scene = new THREE.Scene();
     this.sizes = new Sizes(this.canvas);
     this.times = new Time();
     this.camera = new Camera();
     this.stars = new Stars();
-    // this.stains = new Stains()
+    this.stains = new Stains();
     this.renderer = new Renderer();
 
     if (process.env.NODE_ENV === "development") {
@@ -48,7 +48,9 @@ export default class Galaxy {
   }
 
   update() {
-    this.control.update();
+    if (process.env.NODE_ENV === "development") {
+      this.control.update();
+    }
     this.stars.update();
     this.renderer.render();
   }
