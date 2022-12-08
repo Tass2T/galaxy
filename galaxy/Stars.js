@@ -55,4 +55,8 @@ export default class Stars {
     const particleTexture = textureLoader.load("galaxy/assets/star.png");
     return particleTexture;
   }
+
+  update() {
+    this.stars.rotateOnAxis(new THREE.Vector3(1, 0, 3), 0.00005);
+  }
 }
