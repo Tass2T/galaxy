@@ -49,6 +49,6 @@ export default class Stars {
   }
 
   update() {
-    this.stars.rotateOnAxis(new THREE.Vector3(1, 0, 3), 0.00005);
+    this.stars.rotateOnAxis(new THREE.Vector3(1, 0, 3), 0.00008);
   }
 }
