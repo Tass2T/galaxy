@@ -7,7 +7,6 @@ export default class Stains {
   constructor() {
     this.galaxy = new Galaxy();
     this.geometry = new THREE.PlaneGeometry(40, 40);
-    console.log(this.geometry);
     this.material = new THREE.ShaderMaterial({
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
