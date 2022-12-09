@@ -3,18 +3,13 @@ import Galaxy from ".";
 import vertexShader from "./shaders/stars/vertex.glsl";
 import fragmentShader from "./shaders/stars/fragment.glsl";
 
-let instance = null;
-
 export default class Stars {
   constructor() {
-    if (instance) {
-      return instance;
-    }
-
     this.galaxy = new Galaxy();
     this.material = new THREE.ShaderMaterial({
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
+      depthTest: false,
     });
     this.stars = null;
 
@@ -22,20 +17,15 @@ export default class Stars {
   }
 
   createStarList() {
-    if (!(this instanceof Stars)) {
-      Object.assign(this, new Stars());
-    }
-    if (this.stars !== null) {
-      this.galaxy.scene.remove(this.stars);
-      this.stars = null;
-    }
-
     this.positions = new Float32Array(this.galaxy.starCount * 3);
+    this.sizes = [];
+
+    this.radius = 20;
 
     for (let i = 0; i < this.positions.length; i += 3) {
-      this.positions[i] = (Math.random() - 0.5) * 20;
-      this.positions[i + 1] = (Math.random() - 0.5) * 20;
-      this.positions[i + 2] = (Math.random() - 0.5) * 20;
+      this.positions[i] = (Math.random() - 0.5) * this.radius;
+      this.positions[i + 1] = (Math.random() - 0.5) * this.radius;
+      this.positions[i + 2] = (Math.random() - 0.5) * this.radius;
     }
 
     this.geometry = new THREE.BufferGeometry();
