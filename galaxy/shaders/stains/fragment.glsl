@@ -1,4 +1,6 @@
 varying vec2 vUv;
+varying float vColor;
+
 precision mediump float;
 
 void main () {

@@ -20,7 +20,10 @@ export default class Stars {
 
   createStarList() {
     this.positions = [];
+    this.colors = [];
     this.sizes = [];
+
+    const color = new THREE.Color();
 
     this.radius = 20;
 
@@ -29,12 +32,18 @@ export default class Stars {
       this.positions.push((Math.random() - 0.5) * this.radius);
       this.positions.push((Math.random() - 0.5) * this.radius);
 
+      this.colors.push(Math.random(), Math.random(), Math.random());
+
       this.sizes.push(0.04);
     }
 
     this.geometry.setAttribute(
       "position",
       new THREE.Float32BufferAttribute(this.positions, 3)
+    );
+    this.geometry.setAttribute(
+      "color",
+      new THREE.Float32BufferAttribute(this.colors, 3)
     );
     this.geometry.setAttribute(
       "size",
