@@ -12,6 +12,7 @@ export default class Controls {
 
     this.instance.enableDamping = true;
     this.instance.target = new THREE.Vector3(0, 0, 0);
+    this.instance.update();
   }
 
   update() {

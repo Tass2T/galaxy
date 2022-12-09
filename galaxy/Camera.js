@@ -7,6 +7,7 @@ export default class Camera {
   }
 
   setInstance() {
+    this.galaxy = new Galaxy();
     this.instance = new THREE.PerspectiveCamera(
       45,
       window.innerWidth / window.innerHeight,
@@ -14,6 +15,8 @@ export default class Camera {
       100
     );
     this.instance.position.set(0, 0, 4);
+
+    if (this.galaxy.control) this.galaxy.control.instance.update();
   }
 
   resize() {
