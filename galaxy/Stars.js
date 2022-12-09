@@ -6,12 +6,13 @@ import fragmentShader from "./shaders/stars/fragment.glsl";
 export default class Stars {
   constructor() {
     this.galaxy = new Galaxy();
-    this.starCount = 4000;
+    this.starCount = 40000;
     this.geometry = new THREE.BufferGeometry();
     this.material = new THREE.ShaderMaterial({
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
       depthTest: false,
+      transparent: true,
     });
     this.stars = null;
 
@@ -23,8 +24,6 @@ export default class Stars {
     this.colors = [];
     this.sizes = [];
 
-    const color = new THREE.Color();
-
     this.radius = 20;
 
     for (let i = 0; i < this.starCount; i++) {
@@ -34,7 +33,7 @@ export default class Stars {
 
       this.colors.push(Math.random(), Math.random(), Math.random());
 
-      this.sizes.push(0.04);
+      this.sizes.push(0.046);
     }
 
     this.geometry.setAttribute(
@@ -59,7 +58,5 @@ export default class Stars {
   update() {
     this.stars.rotateOnAxis(new THREE.Vector3(1, 0, 3), 0.00008) *
       this.galaxy.times.delta;
-
-    this.material.uniforms.uTime = parseFloat(this.galaxy.times.delta);
   }
 }
