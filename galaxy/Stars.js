@@ -1,5 +1,7 @@
 import * as THREE from "three";
 import Galaxy from ".";
+import vertexShader from "./shaders/stars/vertex.glsl";
+import fragmentShader from "./shaders/stars/fragment.glsl";
 
 let instance = null;
 
@@ -10,13 +12,9 @@ export default class Stars {
     }
 
     this.galaxy = new Galaxy();
-    this.texture = this.getStarTexture();
-    this.material = new THREE.PointsMaterial({
-      size: 0.01,
-      transparent: true,
-      map: this.texture,
-      alphaMap: this.texture,
-      depthWrite: false,
+    this.material = new THREE.ShaderMaterial({
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader,
     });
     this.stars = null;
 
@@ -48,12 +46,6 @@ export default class Stars {
 
     this.stars = new THREE.Points(this.geometry, this.material);
     this.galaxy.scene.add(this.stars);
-  }
-
-  getStarTexture() {
-    const textureLoader = new THREE.TextureLoader();
-    const particleTexture = textureLoader.load("galaxy/assets/star.png");
-    return particleTexture;
   }
 
   update() {
