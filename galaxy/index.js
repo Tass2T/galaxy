@@ -19,7 +19,6 @@ export default class Galaxy {
     instance = this;
 
     this.canvas = canvas;
-    this.starCount = 4000;
     this.scene = new THREE.Scene();
     this.sizes = new Sizes(this.canvas);
     this.times = new Time();
