@@ -5,5 +5,5 @@ precision mediump float;
 
 void main () {
     float alpha = 0.4 - distance(vUv, vec2(0.5));
-    gl_FragColor = vec4(alpha);
+    gl_FragColor = vec4(vColor.r, vColor.g, vColor.b, alpha );
 }
