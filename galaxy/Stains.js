@@ -6,20 +6,17 @@ import fragmentShader from "./shaders/stains/fragment.glsl";
 export default class Stains {
   constructor() {
     this.galaxy = new Galaxy();
-    this.geometry = new THREE.PlaneGeometry(18, 18);
+    this.geometry = new THREE.PlaneGeometry(7, 7);
     this.setColor();
     this.material = new THREE.ShaderMaterial({
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
-      alphaTest: true,
       transparent: true,
+      blending: THREE.AdditiveBlending,
     });
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.mesh2 = new THREE.Mesh(this.geometry, this.material);
-    this.mesh.position.set(5, 4, -13.1);
-    this.mesh2.position.set(-4, 0, -13);
+    this.stainGroup = new THREE.Group();
 
-    this.galaxy.scene.add(this.mesh, this.mesh2);
+    this.setMeshes();
   }
 
   setColor() {
@@ -33,5 +30,22 @@ export default class Stains {
       "color",
       new THREE.Float32BufferAttribute(color, 3)
     );
+  }
+
+  setMeshes() {
+    const position = [
+      [-4, 1, -1],
+      [0, 0, -2],
+      [3, -1, -5],
+      [-5, -3, -4],
+      [-1, -4, -5],
+    ];
+    for (let i = 0; i < 5; i++) {
+      this.stainGroup.add(new THREE.Mesh(this.geometry, this.material));
+    }
+    this.stainGroup.children.forEach((mesh, index) => {
+      mesh.position.set(...position[index]);
+    });
+    this.galaxy.scene.add(this.stainGroup);
   }
 }
