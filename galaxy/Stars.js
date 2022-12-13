@@ -33,7 +33,7 @@ export default class Stars {
 
       this.colors.push(Math.random(), Math.random(), Math.random());
 
-      this.sizes.push(0.27);
+      this.sizes.push(0.37);
     }
 
     this.geometry.setAttribute(
@@ -56,7 +56,7 @@ export default class Stars {
   }
 
   update() {
-    this.stars.rotateOnAxis(new THREE.Vector3(1, 0, 3), 0.00004) *
+    this.stars.rotateOnAxis(new THREE.Vector3(1, 0, 3), 0.00003) *
       this.galaxy.times.delta;
   }
 }
