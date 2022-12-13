@@ -6,7 +6,7 @@ import fragmentShader from "./shaders/stains/fragment.glsl";
 export default class Stains {
   constructor() {
     this.galaxy = new Galaxy();
-    this.geometry = new THREE.PlaneGeometry(7, 7);
+    this.geometry = new THREE.PlaneGeometry(20, 20);
     this.setColor();
     this.material = new THREE.ShaderMaterial({
       vertexShader: vertexShader,
@@ -34,10 +34,10 @@ export default class Stains {
 
   setMeshes() {
     const position = [
-      [-4, 1, -1],
+      [-3, 1, -1],
       [0, 0, -2],
       [3, -1, -5],
-      [-5, -3, -4],
+      [-4, -3, -4],
       [-1, -4, -5],
     ];
     for (let i = 0; i < 5; i++) {
