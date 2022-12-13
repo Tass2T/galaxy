@@ -1,9 +1,9 @@
 varying vec2 vUv;
-varying float vColor;
+varying vec3 vColor;
 
 precision mediump float;
 
 void main () {
-    float result = min(min(vUv.x, 1.0 - vUv.x), min(vUv.y, 1.0 - vUv.y));
-    gl_FragColor = vec4(result);
+    float alpha = 0.4 - distance(vUv, vec2(0.5));
+    gl_FragColor = vec4(alpha);
 }
