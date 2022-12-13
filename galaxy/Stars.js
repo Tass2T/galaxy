@@ -33,7 +33,7 @@ export default class Stars {
 
       this.colors.push(Math.random(), Math.random(), Math.random());
 
-      this.sizes.push(0.37);
+      this.sizes.push(0.45);
     }
 
     this.geometry.setAttribute(

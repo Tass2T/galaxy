@@ -6,8 +6,6 @@ import fragmentShader from "./shaders/stains/fragment.glsl";
 export default class Stains {
   constructor() {
     this.galaxy = new Galaxy();
-    this.geometry = new THREE.PlaneGeometry(20, 20);
-    this.setColor();
     this.material = new THREE.ShaderMaterial({
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
@@ -19,29 +17,36 @@ export default class Stains {
     this.setMeshes();
   }
 
-  setColor() {
+  setColor(geometry, index) {
+    const colorSet = [
+      [0.9, 0.0, 1.0],
+      [1.0, 1.0, 0.5],
+      [1.0, 1.0, 1.0],
+      [0.5, 0.0, 1.0],
+      [1.0, 1.0, 0.5],
+    ];
+
     const color = [];
 
-    for (let i = 0; i < this.geometry.attributes.uv.count; i++) {
-      color.push(Math.random(), Math.random(), Math.random());
+    for (let i = 0; i < geometry.attributes.uv.count; i++) {
+      color.push(...colorSet[index]);
     }
 
-    this.geometry.setAttribute(
-      "color",
-      new THREE.Float32BufferAttribute(color, 3)
-    );
+    geometry.setAttribute("color", new THREE.Float32BufferAttribute(color, 3));
   }
 
   setMeshes() {
     const position = [
       [-3, 1, -1],
       [0, 0, -2],
-      [3, -1, -5],
-      [-4, -3, -4],
+      [3, -1, -5.1],
+      [-5, -3, -4],
       [-1, -4, -5],
     ];
     for (let i = 0; i < 5; i++) {
-      this.stainGroup.add(new THREE.Mesh(this.geometry, this.material));
+      const geometry = new THREE.PlaneGeometry(20, 20);
+      this.setColor(geometry, i);
+      this.stainGroup.add(new THREE.Mesh(geometry, this.material));
     }
     this.stainGroup.children.forEach((mesh, index) => {
       mesh.position.set(...position[index]);
