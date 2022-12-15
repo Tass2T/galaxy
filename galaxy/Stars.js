@@ -15,6 +15,7 @@ export default class Stars {
       transparent: true,
     });
     this.stars = null;
+    this.axis = new THREE.Vector3(1, 0, 3);
 
     this.createStarList();
   }
@@ -56,7 +57,6 @@ export default class Stars {
   }
 
   update() {
-    this.stars.rotateOnAxis(new THREE.Vector3(1, 0, 3), 0.00003) *
-      this.galaxy.times.delta;
+    this.stars.rotateOnAxis(this.axis, 0.00003) * this.galaxy.times.delta;
   }
 }
