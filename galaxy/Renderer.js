@@ -13,6 +13,7 @@ export default class Renderer {
       canvas: this.galaxy.canvas,
     });
     this.instance.setClearColor("#020F1D");
+    this.instance.outputEncoding = THREE.sRGBEncoding;
 
     this.resize();
   }

@@ -7,6 +7,7 @@ import Renderer from "./Renderer";
 import Controls from "./Utils/Controls";
 // import GUID from "./Utils/guid";
 import Stains from "./Stains";
+import EffectRenderer from "./EffectRenderer";
 
 let instance = null;
 
@@ -26,6 +27,7 @@ export default class Galaxy {
     this.stars = new Stars();
     this.stains = new Stains();
     this.renderer = new Renderer();
+    this.effectComposer = new EffectRenderer();
 
     if (process.env.NODE_ENV === "development") {
       this.control = new Controls(this.camera.instance, this.canvas);
@@ -39,11 +41,13 @@ export default class Galaxy {
     this.times.on("tick", () => {
       this.update();
     });
+    this.resize();
   }
 
   resize() {
     this.camera.resize();
     this.renderer.resize();
+    this.effectComposer.resize();
   }
 
   update() {
@@ -51,6 +55,6 @@ export default class Galaxy {
       this.control.update();
     }
     this.stars.update();
-    this.renderer.render();
+    this.effectComposer.render();
   }
 }
