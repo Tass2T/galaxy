@@ -14,6 +14,7 @@ export default class Renderer {
     });
     this.instance.setClearColor("#020F1D");
     this.instance.outputEncoding = THREE.sRGBEncoding;
+    this.instance.toneMapping = THREE.ReinhardToneMapping;
 
     this.resize();
   }

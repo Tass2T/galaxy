@@ -37,11 +37,11 @@ export default class Stains {
 
   setMeshes() {
     const position = [
-      [-3, 1, -1],
+      [-4, 1, -1],
       [0, 0, -2],
       [3, -1, -5.1],
       [-5, -3, -4],
-      [-1, -4, -5],
+      [-1, -3, -5],
     ];
     for (let i = 0; i < 5; i++) {
       const geometry = new THREE.PlaneGeometry(20, 20);

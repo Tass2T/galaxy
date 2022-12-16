@@ -1,9 +1,8 @@
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
-import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import Galaxy from ".";
-import vertexShader from "./shaders/postProcessing/vertex.glsl";
-import fragmentShader from "./shaders/postProcessing/fragment.glsl";
+import * as THREE from "three";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 
 export default class EffectRenderer {
   constructor() {
@@ -18,13 +17,16 @@ export default class EffectRenderer {
 
     this.composer.addPass(this.renderPass);
 
-    this.pass = new ShaderPass({
-      uniforms: {
-        tDiffuse: { value: null },
-      },
-      vertexShader,
-      fragmentShader,
-    });
+    this.pass = new UnrealBloomPass(
+      new THREE.Vector2(window.innerWidth, window.innerHeight),
+      1.5,
+      0.4,
+      0.85
+    );
+    this.pass.threshold = 0.05;
+    this.pass.strength = 0.7;
+    this.pass.radius = 1;
+
     this.composer.addPass(this.pass);
   }
 

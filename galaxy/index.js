@@ -5,7 +5,7 @@ import Stars from "./Stars";
 import * as THREE from "three";
 import Renderer from "./Renderer";
 import Controls from "./Utils/Controls";
-// import GUID from "./Utils/guid";
+import GUID from "./Utils/guid";
 import Stains from "./Stains";
 import EffectRenderer from "./EffectRenderer";
 
@@ -31,7 +31,7 @@ export default class Galaxy {
 
     if (process.env.NODE_ENV === "development") {
       this.control = new Controls(this.camera.instance, this.canvas);
-      // this.guid = new GUID();
+      this.guid = new GUID();
     }
 
     // EVENTS
@@ -55,6 +55,6 @@ export default class Galaxy {
       this.control.update();
     }
     this.stars.update();
-    this.effectComposer.render();
+    this.renderer.render();
   }
 }
